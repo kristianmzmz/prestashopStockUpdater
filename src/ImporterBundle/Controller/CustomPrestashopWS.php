@@ -3,6 +3,7 @@
 namespace ImporterBundle\Controller;
 
 use ImporterBundle\Entity\Product;
+use ImporterBundle\Entity\Stock;
 use PrestaShopWebservice;
 use PrestaShopWebserviceException;
 use Symfony\Component\Config\FileLocator;
@@ -137,14 +138,14 @@ class CustomPrestashopWS extends PrestaShopWebservice
 
 
     /**
-     * @param Product $product
+     * @param Stock $productStock
      *
-     * @return bool|Product
+     * @return bool|Stock
      */
-    public function updateStock(Product $product)
+    public function updateStock(Stock $productStock)
     {
         // If there's no data...
-        if (!$wsProduct = $this->updateProductStock($product)) {
+        if (!$wsProduct = $this->updateProductStock($productStock)) {
             return false;
         }
 
@@ -152,13 +153,13 @@ class CustomPrestashopWS extends PrestaShopWebservice
         $result = $this->edit(
             array(
                 "resource" => "products",
-                "id" => $product->getIdProduct(),
-                "putXml" => $wsProduct->asXML(),
+                "id" => $productStock->getIdProduct(),
+                    "putXml" => $wsProduct->asXML(),
             )
         );
 
         if ($result) {
-            return $product;
+            return $productStock;
         }
 
         return false;
@@ -262,7 +263,7 @@ class CustomPrestashopWS extends PrestaShopWebservice
      *
      * @return \SimpleXMLElement
      */
-    private function updateProductStock(Product $product)
+    private function updateProductStock(Stock $product)
     {
         // Get the current product, to store the current data.
         $productUpdate = $this->get(array('resource' => 'products', 'id' => $product->getIdProduct()));

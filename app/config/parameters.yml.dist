@@ -16,6 +16,7 @@ parameters:
 
     # Local path to the CSV file
     path_to_csv:        /Volumes/Develop/products.csv
+    path_to_csv_stocks: /Volumes/Develop/stocks.csv
 
     # Domain info
     domain: "http://www.test.com/"

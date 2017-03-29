@@ -8,11 +8,13 @@ Requirements
 Installation
 ============
 - Composer install 
-- Fill the parameters
+- Fill the requested parameters 
+- Create database schema --> ***php app/console stock:updater***
 
 Commands:
 ========
-- Launch in command line --> ***php app/console importer:import_products***
+- Update Stocks only --> ***php app/console stock:updater***
+- Updates Full product --> ***php app/console importer:import_products***
 
 
 Notes 

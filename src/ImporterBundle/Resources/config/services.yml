@@ -12,6 +12,11 @@ services:
         arguments:
             - '%path_to_csv%'
 
+    # CSV product mapping columns
+    importer_bundle.csv_stocks_columns_mapping:
+        class: ImporterBundle\Entity\CsvOnlyStockMapping
+        arguments:
+            - '%path_to_csv_stocks%'
     # Product Repository
     importer_bundle.repository.product:
         class: ImporterBundle\Entity\ProductRepository

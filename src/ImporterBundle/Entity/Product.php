@@ -4,10 +4,7 @@ namespace ImporterBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * Product
- *
- */
+
 class Product
 {
     /** @var integer */
@@ -737,5 +734,29 @@ class Product
     {
         $this->realProductId = $realProductId;
     }
-}
+    /**
+     * @var integer
+     */
+    private $realproductid;
 
+
+    /**
+     * Get active
+     *
+     * @return boolean
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     * Get updated
+     *
+     * @return boolean
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
+    }
+}

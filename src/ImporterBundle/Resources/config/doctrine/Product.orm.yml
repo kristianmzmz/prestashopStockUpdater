@@ -197,4 +197,10 @@ ImporterBundle\Entity\Product:
             length: 65535
             options:
                 fixed: false
+        realproductid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: true
+            column: realProductId
     lifecycleCallbacks: {  }

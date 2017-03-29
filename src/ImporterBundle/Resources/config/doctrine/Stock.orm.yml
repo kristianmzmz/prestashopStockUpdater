@@ -1,0 +1,22 @@
+ImporterBundle\Entity\Stock:
+    type: entity
+    table: stock
+    repositoryClass: ImporterBundle\Entity\StockRepository
+    id:
+        idProduct:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            column: id_product
+            generator:
+                strategy: IDENTITY
+    fields:
+        quantity:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                default: '0'
+    lifecycleCallbacks: {  }

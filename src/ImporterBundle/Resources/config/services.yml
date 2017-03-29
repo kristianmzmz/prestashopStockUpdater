@@ -1,0 +1,28 @@
+services:
+    importer_bundle.provider.csv:
+        class: ImporterBundle\Controller\CsvProductProvider
+        arguments:
+            - '@importer_bundle.repository.product'
+            - '@importer_bundle.csv_products_columns_mapping'
+            - '%images_path%'
+
+    # CSV product mapping columns
+    importer_bundle.csv_products_columns_mapping:
+        class: ImporterBundle\Entity\CsvProductMapping
+        arguments:
+            - '%path_to_csv%'
+
+    # Product Repository
+    importer_bundle.repository.product:
+        class: ImporterBundle\Entity\ProductRepository
+        factory: ['@doctrine.orm.default_entity_manager', getRepository]
+        arguments:
+            - ImporterBundle\Entity\Product
+
+    # Product Repository
+    importer_bundle.web_service_factory:
+        class: ImporterBundle\Service\WebServiceFactory
+        arguments:
+            - '%domain%'
+            - '%prestashop_webservice_key%'
+            - '%debug%'

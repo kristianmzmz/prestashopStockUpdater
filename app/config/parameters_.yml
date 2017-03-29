@@ -1,0 +1,17 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: importer
+    database_user: root
+    database_password: null
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    secret: 23b909b3e7922d86e42b399b45c97b58209dabf0
+    path_to_csv: /Volumes/Develop/products.csv
+    domain: 'http://test.cristianmunoz.es'
+    images_path: /Volumes/Develop/images/
+    prestashop_webservice_key: K6G77C115ANSJGFIE4125CE4EU4C4UDH
+    debug: false

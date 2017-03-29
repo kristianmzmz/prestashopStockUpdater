@@ -1,0 +1,200 @@
+ImporterBundle\Entity\Product:
+    type: entity
+    table: product
+    repositoryClass: ImporterBundle\Entity\ProductRepository
+    id:
+        idProduct:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            column: id_product
+            generator:
+                strategy: IDENTITY
+    fields:
+        idLang:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            column: id_lang
+        name:
+            type: string
+            nullable: false
+            length: 128
+            options:
+                fixed: false
+        description:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+        descriptionShort:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+            column: description_short
+        linkRewrite:
+            type: string
+            nullable: false
+            length: 128
+            options:
+                fixed: false
+            column: link_rewrite
+        metaDescription:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: meta_description
+        metaKeywords:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: meta_keywords
+        metaTitle:
+            type: string
+            nullable: true
+            length: 128
+            options:
+                fixed: false
+            column: meta_title
+        idCategoryDefault:
+            type: integer
+            nullable: true
+            options:
+                unsigned: true
+            column: id_category_default
+        categories:
+            type: integer
+            nullable: true
+            options:
+                unsigned: true
+        reference:
+            type: string
+            nullable: true
+            length: 32
+            options:
+                fixed: false
+        supplierReference:
+            type: string
+            nullable: true
+            length: 32
+            options:
+                fixed: false
+            column: supplier_reference
+        price:
+            type: decimal
+            nullable: false
+            precision: 20
+            scale: 6
+            options:
+                default: '0.000000'
+        idSupplier:
+            type: integer
+            nullable: true
+            options:
+                unsigned: true
+            column: id_supplier
+        idManufacturer:
+            type: integer
+            nullable: true
+            options:
+                unsigned: true
+            column: id_manufacturer
+        idShopDefault:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+                default: '1'
+            column: id_shop_default
+        idTaxRulesGroup:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+                default: '1'
+            column: id_tax_rules_group
+        ean13:
+            type: string
+            nullable: true
+            length: 13
+            options:
+                fixed: false
+        quantity:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                default: '0'
+        unity:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        width:
+            type: decimal
+            nullable: false
+            precision: 20
+            scale: 6
+            options:
+                default: '0.000000'
+        height:
+            type: decimal
+            nullable: false
+            precision: 20
+            scale: 6
+            options:
+                default: '0.000000'
+        depth:
+            type: decimal
+            nullable: false
+            precision: 20
+            scale: 6
+            options:
+                default: '0.000000'
+        weight:
+            type: decimal
+            nullable: false
+            precision: 20
+            scale: 6
+            options:
+                default: '0.000000'
+        active:
+            type: boolean
+            nullable: false
+            options:
+                default: '1'
+        updated:
+            type: boolean
+            nullable: false
+            options:
+                default: '1'
+        tags:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+        images:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+        features:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+    lifecycleCallbacks: {  }

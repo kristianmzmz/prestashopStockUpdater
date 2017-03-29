@@ -1,0 +1,741 @@
+<?php
+
+SimpleXMLElement::__set_state(
+    array(
+        'id' =>
+            SimpleXMLElement::__set_state(
+                array()
+            ),
+        'id_manufacturer' =>
+            SimpleXMLElement::__set_state(
+                array()
+            ),
+        'id_supplier' =>
+            SimpleXMLElement::__set_state(
+                array()
+            ),
+        'id_category_default' =>
+            SimpleXMLElement::__set_state(
+                array()
+            ),
+        'new' =>
+            SimpleXMLElement::__set_state(
+                array()
+            ),
+        'cache_default_attribute' =>
+            SimpleXMLElement::__set_state(
+                array()
+            ),
+        'id_default_image' =>
+            SimpleXMLElement::__set_state(
+                array()
+            ),
+        'id_default_combination' =>
+            SimpleXMLElement::__set_state(
+                array()
+            ),
+        'id_tax_rules_group' =>
+            SimpleXMLElement::__set_state(
+                array()
+            ),
+        'position_in_category' =>
+            SimpleXMLElement::__set_state(
+                array()
+            ),
+        'type' =>
+            SimpleXMLElement::__set_state(
+                array()
+            ),
+        'id_shop_default' =>
+            SimpleXMLElement::__set_state(
+                array()
+            ),
+        'reference' =>
+            SimpleXMLElement::__set_state(
+                array()
+            ),
+        'supplier_reference' =>
+            SimpleXMLElement::__set_state(
+                array()
+            ),
+        'location' =>
+            SimpleXMLElement::__set_state(
+                array()
+            ),
+        'width' =>
+            SimpleXMLElement::__set_state(
+                array()
+            ),
+        'height' =>
+            SimpleXMLElement::__set_state(
+                array()
+            ),
+        'depth' =>
+            SimpleXMLElement::__set_state(
+                array()
+            ),
+        'weight' =>
+            SimpleXMLElement::__set_state(
+                array()
+            ),
+        'quantity_discount' =>
+            SimpleXMLElement::__set_state(
+                array()
+            ),
+        'ean13' =>
+            SimpleXMLElement::__set_state(
+                array()
+            ),
+        'upc' =>
+            SimpleXMLElement::__set_state(
+                array()
+            ),
+        'cache_is_pack' =>
+            SimpleXMLElement::__set_state(
+                array()
+            ),
+        'cache_has_attachments' =>
+            SimpleXMLElement::__set_state(
+                array()
+            ),
+        'is_virtual' =>
+            SimpleXMLElement::__set_state(
+                array()
+            ),
+        'on_sale' =>
+            SimpleXMLElement::__set_state(
+                array()
+            ),
+        'online_only' =>
+            SimpleXMLElement::__set_state(
+                array()
+            ),
+        'ecotax' =>
+            SimpleXMLElement::__set_state(
+                array()
+            ),
+        'minimal_quantity' =>
+            SimpleXMLElement::__set_state(
+                array()
+            ),
+        'price' =>
+            SimpleXMLElement::__set_state(
+                array()
+            ),
+        'wholesale_price' =>
+            SimpleXMLElement::__set_state(
+                array()
+            ),
+        'unity' =>
+            SimpleXMLElement::__set_state(
+                array()
+            ),
+        'unit_price_ratio' =>
+            SimpleXMLElement::__set_state(
+                array()
+            ),
+        'additional_shipping_cost' =>
+            SimpleXMLElement::__set_state(
+                array()
+            ),
+        'customizable' =>
+            SimpleXMLElement::__set_state(
+                array()
+            ),
+        'text_fields' =>
+            SimpleXMLElement::__set_state(
+                array()
+            ),
+        'uploadable_files' =>
+            SimpleXMLElement::__set_state(
+                array()
+            ),
+        'active' =>
+            SimpleXMLElement::__set_state(
+                array()
+            ),
+        'redirect_type' =>
+            SimpleXMLElement::__set_state(
+                array()
+            ),
+        'id_product_redirected' =>
+            SimpleXMLElement::__set_state(
+                array()
+            ),
+        'available_for_order' =>
+            SimpleXMLElement::__set_state(
+                array()
+            ),
+        'available_date' =>
+            SimpleXMLElement::__set_state(
+                array()
+            ),
+        'condition' =>
+            SimpleXMLElement::__set_state(
+                array()
+            ),
+        'show_price' =>
+            SimpleXMLElement::__set_state(
+                array()
+            ),
+        'indexed' =>
+            SimpleXMLElement::__set_state(
+                array()
+            ),
+        'visibility' =>
+            SimpleXMLElement::__set_state(
+                array()
+            ),
+        'advanced_stock_management' =>
+            SimpleXMLElement::__set_state(
+                array()
+            ),
+        'date_add' =>
+            SimpleXMLElement::__set_state(
+                array()
+            ),
+        'date_upd' =>
+            SimpleXMLElement::__set_state(
+                array()
+            ),
+        'meta_description' =>
+            SimpleXMLElement::__set_state(
+                array(
+                    'language' =>
+                        array(
+                            0 =>
+                                SimpleXMLElement::__set_state(
+                                    array(
+                                        '@attributes' =>
+                                            array(
+                                                'id' => '1',
+                                            ),
+                                    )
+                                ),
+                            1 =>
+                                SimpleXMLElement::__set_state(
+                                    array(
+                                        '@attributes' =>
+                                            array(
+                                                'id' => '2',
+                                            ),
+                                    )
+                                ),
+                            2 =>
+                                SimpleXMLElement::__set_state(
+                                    array(
+                                        '@attributes' =>
+                                            array(
+                                                'id' => '3',
+                                            ),
+                                    )
+                                ),
+                            3 =>
+                                SimpleXMLElement::__set_state(
+                                    array(
+                                        '@attributes' =>
+                                            array(
+                                                'id' => '5',
+                                            ),
+                                    )
+                                ),
+                        ),
+                )
+            ),
+        'meta_keywords' =>
+            SimpleXMLElement::__set_state(
+                array(
+                    'language' =>
+                        array(
+                            0 =>
+                                SimpleXMLElement::__set_state(
+                                    array(
+                                        '@attributes' =>
+                                            array(
+                                                'id' => '1',
+                                            ),
+                                    )
+                                ),
+                            1 =>
+                                SimpleXMLElement::__set_state(
+                                    array(
+                                        '@attributes' =>
+                                            array(
+                                                'id' => '2',
+                                            ),
+                                    )
+                                ),
+                            2 =>
+                                SimpleXMLElement::__set_state(
+                                    array(
+                                        '@attributes' =>
+                                            array(
+                                                'id' => '3',
+                                            ),
+                                    )
+                                ),
+                            3 =>
+                                SimpleXMLElement::__set_state(
+                                    array(
+                                        '@attributes' =>
+                                            array(
+                                                'id' => '5',
+                                            ),
+                                    )
+                                ),
+                        ),
+                )
+            ),
+        'meta_title' =>
+            SimpleXMLElement::__set_state(
+                array(
+                    'language' =>
+                        array(
+                            0 =>
+                                SimpleXMLElement::__set_state(
+                                    array(
+                                        '@attributes' =>
+                                            array(
+                                                'id' => '1',
+                                            ),
+                                    )
+                                ),
+                            1 =>
+                                SimpleXMLElement::__set_state(
+                                    array(
+                                        '@attributes' =>
+                                            array(
+                                                'id' => '2',
+                                            ),
+                                    )
+                                ),
+                            2 =>
+                                SimpleXMLElement::__set_state(
+                                    array(
+                                        '@attributes' =>
+                                            array(
+                                                'id' => '3',
+                                            ),
+                                    )
+                                ),
+                            3 =>
+                                SimpleXMLElement::__set_state(
+                                    array(
+                                        '@attributes' =>
+                                            array(
+                                                'id' => '5',
+                                            ),
+                                    )
+                                ),
+                        ),
+                )
+            ),
+        'link_rewrite' =>
+            SimpleXMLElement::__set_state(
+                array(
+                    'language' =>
+                        array(
+                            0 =>
+                                SimpleXMLElement::__set_state(
+                                    array(
+                                        '@attributes' =>
+                                            array(
+                                                'id' => '1',
+                                            ),
+                                    )
+                                ),
+                            1 =>
+                                SimpleXMLElement::__set_state(
+                                    array(
+                                        '@attributes' =>
+                                            array(
+                                                'id' => '2',
+                                            ),
+                                    )
+                                ),
+                            2 =>
+                                SimpleXMLElement::__set_state(
+                                    array(
+                                        '@attributes' =>
+                                            array(
+                                                'id' => '3',
+                                            ),
+                                    )
+                                ),
+                            3 =>
+                                SimpleXMLElement::__set_state(
+                                    array(
+                                        '@attributes' =>
+                                            array(
+                                                'id' => '5',
+                                            ),
+                                    )
+                                ),
+                        ),
+                )
+            ),
+        'name' =>
+            SimpleXMLElement::__set_state(
+                array(
+                    'language' =>
+                        array(
+                            0 =>
+                                SimpleXMLElement::__set_state(
+                                    array(
+                                        '@attributes' =>
+                                            array(
+                                                'id' => '1',
+                                            ),
+                                    )
+                                ),
+                            1 =>
+                                SimpleXMLElement::__set_state(
+                                    array(
+                                        '@attributes' =>
+                                            array(
+                                                'id' => '2',
+                                            ),
+                                    )
+                                ),
+                            2 =>
+                                SimpleXMLElement::__set_state(
+                                    array(
+                                        '@attributes' =>
+                                            array(
+                                                'id' => '3',
+                                            ),
+                                    )
+                                ),
+                            3 =>
+                                SimpleXMLElement::__set_state(
+                                    array(
+                                        '@attributes' =>
+                                            array(
+                                                'id' => '5',
+                                            ),
+                                    )
+                                ),
+                        ),
+                )
+            ),
+        'description' =>
+            SimpleXMLElement::__set_state(
+                array(
+                    'language' =>
+                        array(
+                            0 =>
+                                SimpleXMLElement::__set_state(
+                                    array(
+                                        '@attributes' =>
+                                            array(
+                                                'id' => '1',
+                                            ),
+                                    )
+                                ),
+                            1 =>
+                                SimpleXMLElement::__set_state(
+                                    array(
+                                        '@attributes' =>
+                                            array(
+                                                'id' => '2',
+                                            ),
+                                    )
+                                ),
+                            2 =>
+                                SimpleXMLElement::__set_state(
+                                    array(
+                                        '@attributes' =>
+                                            array(
+                                                'id' => '3',
+                                            ),
+                                    )
+                                ),
+                            3 =>
+                                SimpleXMLElement::__set_state(
+                                    array(
+                                        '@attributes' =>
+                                            array(
+                                                'id' => '5',
+                                            ),
+                                    )
+                                ),
+                        ),
+                )
+            ),
+        'description_short' =>
+            SimpleXMLElement::__set_state(
+                array(
+                    'language' =>
+                        array(
+                            0 =>
+                                SimpleXMLElement::__set_state(
+                                    array(
+                                        '@attributes' =>
+                                            array(
+                                                'id' => '1',
+                                            ),
+                                    )
+                                ),
+                            1 =>
+                                SimpleXMLElement::__set_state(
+                                    array(
+                                        '@attributes' =>
+                                            array(
+                                                'id' => '2',
+                                            ),
+                                    )
+                                ),
+                            2 =>
+                                SimpleXMLElement::__set_state(
+                                    array(
+                                        '@attributes' =>
+                                            array(
+                                                'id' => '3',
+                                            ),
+                                    )
+                                ),
+                            3 =>
+                                SimpleXMLElement::__set_state(
+                                    array(
+                                        '@attributes' =>
+                                            array(
+                                                'id' => '5',
+                                            ),
+                                    )
+                                ),
+                        ),
+                )
+            ),
+        'available_now' =>
+            SimpleXMLElement::__set_state(
+                array(
+                    'language' =>
+                        array(
+                            0 =>
+                                SimpleXMLElement::__set_state(
+                                    array(
+                                        '@attributes' =>
+                                            array(
+                                                'id' => '1',
+                                            ),
+                                    )
+                                ),
+                            1 =>
+                                SimpleXMLElement::__set_state(
+                                    array(
+                                        '@attributes' =>
+                                            array(
+                                                'id' => '2',
+                                            ),
+                                    )
+                                ),
+                            2 =>
+                                SimpleXMLElement::__set_state(
+                                    array(
+                                        '@attributes' =>
+                                            array(
+                                                'id' => '3',
+                                            ),
+                                    )
+                                ),
+                            3 =>
+                                SimpleXMLElement::__set_state(
+                                    array(
+                                        '@attributes' =>
+                                            array(
+                                                'id' => '5',
+                                            ),
+                                    )
+                                ),
+                        ),
+                )
+            ),
+        'available_later' =>
+            SimpleXMLElement::__set_state(
+                array(
+                    'language' =>
+                        array(
+                            0 =>
+                                SimpleXMLElement::__set_state(
+                                    array(
+                                        '@attributes' =>
+                                            array(
+                                                'id' => '1',
+                                            ),
+                                    )
+                                ),
+                            1 =>
+                                SimpleXMLElement::__set_state(
+                                    array(
+                                        '@attributes' =>
+                                            array(
+                                                'id' => '2',
+                                            ),
+                                    )
+                                ),
+                            2 =>
+                                SimpleXMLElement::__set_state(
+                                    array(
+                                        '@attributes' =>
+                                            array(
+                                                'id' => '3',
+                                            ),
+                                    )
+                                ),
+                            3 =>
+                                SimpleXMLElement::__set_state(
+                                    array(
+                                        '@attributes' =>
+                                            array(
+                                                'id' => '5',
+                                            ),
+                                    )
+                                ),
+                        ),
+                )
+            ),
+        'associations' =>
+            SimpleXMLElement::__set_state(
+                array(
+                    'categories' =>
+                        SimpleXMLElement::__set_state(
+                            array(
+                                'category' =>
+                                    SimpleXMLElement::__set_state(
+                                        array(
+                                            'id' =>
+                                                SimpleXMLElement::__set_state(
+                                                    array()
+                                                ),
+                                        )
+                                    ),
+                            )
+                        ),
+                    'images' =>
+                        SimpleXMLElement::__set_state(
+                            array(
+                                'image' =>
+                                    SimpleXMLElement::__set_state(
+                                        array(
+                                            'id' =>
+                                                SimpleXMLElement::__set_state(
+                                                    array()
+                                                ),
+                                        )
+                                    ),
+                            )
+                        ),
+                    'combinations' =>
+                        SimpleXMLElement::__set_state(
+                            array(
+                                'combination' =>
+                                    SimpleXMLElement::__set_state(
+                                        array(
+                                            'id' =>
+                                                SimpleXMLElement::__set_state(
+                                                    array()
+                                                ),
+                                        )
+                                    ),
+                            )
+                        ),
+                    'product_option_values' =>
+                        SimpleXMLElement::__set_state(
+                            array(
+                                'product_option_value' =>
+                                    SimpleXMLElement::__set_state(
+                                        array(
+                                            'id' =>
+                                                SimpleXMLElement::__set_state(
+                                                    array()
+                                                ),
+                                        )
+                                    ),
+                            )
+                        ),
+                    'product_features' =>
+                        SimpleXMLElement::__set_state(
+                            array(
+                                'product_feature' =>
+                                    SimpleXMLElement::__set_state(
+                                        array(
+                                            'id' =>
+                                                SimpleXMLElement::__set_state(
+                                                    array()
+                                                ),
+                                            'id_feature_value' =>
+                                                SimpleXMLElement::__set_state(
+                                                    array()
+                                                ),
+                                        )
+                                    ),
+                            )
+                        ),
+                    'tags' =>
+                        SimpleXMLElement::__set_state(
+                            array(
+                                'tag' =>
+                                    SimpleXMLElement::__set_state(
+                                        array(
+                                            'id' =>
+                                                SimpleXMLElement::__set_state(
+                                                    array()
+                                                ),
+                                        )
+                                    ),
+                            )
+                        ),
+                    'stock_availables' =>
+                        SimpleXMLElement::__set_state(
+                            array(
+                                'stock_available' =>
+                                    SimpleXMLElement::__set_state(
+                                        array(
+                                            'id' =>
+                                                SimpleXMLElement::__set_state(
+                                                    array()
+                                                ),
+                                            'id_product_attribute' =>
+                                                SimpleXMLElement::__set_state(
+                                                    array()
+                                                ),
+                                        )
+                                    ),
+                            )
+                        ),
+                    'accessories' =>
+                        SimpleXMLElement::__set_state(
+                            array(
+                                'product' =>
+                                    SimpleXMLElement::__set_state(
+                                        array(
+                                            'id' =>
+                                                SimpleXMLElement::__set_state(
+                                                    array()
+                                                ),
+                                        )
+                                    ),
+                            )
+                        ),
+                    'product_bundle' =>
+                        SimpleXMLElement::__set_state(
+                            array(
+                                'product' =>
+                                    SimpleXMLElement::__set_state(
+                                        array(
+                                            'id' =>
+                                                SimpleXMLElement::__set_state(
+                                                    array()
+                                                ),
+                                            'quantity' =>
+                                                SimpleXMLElement::__set_state(
+                                                    array()
+                                                ),
+                                        )
+                                    ),
+                            )
+                        ),
+                )
+            ),
+    )
+)

@@ -135,6 +135,35 @@ class CustomPrestashopWS extends PrestaShopWebservice
         return false;
     }
 
+
+    /**
+     * @param Product $product
+     *
+     * @return bool|Product
+     */
+    public function updateStock(Product $product)
+    {
+        // If there's no data...
+        if (!$wsProduct = $this->updateProductStock($product)) {
+            return false;
+        }
+
+        // Update the product!
+        $result = $this->edit(
+            array(
+                "resource" => "products",
+                "id" => $product->getIdProduct(),
+                "putXml" => $wsProduct->asXML(),
+            )
+        );
+
+        if ($result) {
+            return $product;
+        }
+
+        return false;
+    }
+
     /**
      * Converts the Schema product from prestashop, to a new one with the Database data
      *
@@ -224,6 +253,25 @@ class CustomPrestashopWS extends PrestaShopWebservice
         }
 
         return $productSchema;
+    }
+
+    /**
+     * Converts the Schema product from prestashop, to a new one with the Database data
+     *
+     * @param Product $product
+     *
+     * @return \SimpleXMLElement
+     */
+    private function updateProductStock(Product $product)
+    {
+        // Get the current product, to store the current data.
+        $productUpdate = $this->get(array('resource' => 'products', 'id' => $product->getIdProduct()));
+
+        $productResources = $productUpdate->children()->children();
+
+        $productResources->quantity = $product->getQuantity();
+
+        return $productUpdate;
     }
 
     /**

@@ -10,8 +10,6 @@ ImporterBundle\Entity\Stock:
                 unsigned: true
             id: true
             column: id_product
-            generator:
-                strategy: IDENTITY
     fields:
         quantity:
             type: integer

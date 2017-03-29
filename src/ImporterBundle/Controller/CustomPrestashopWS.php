@@ -145,24 +145,7 @@ class CustomPrestashopWS extends PrestaShopWebservice
     public function updateStock(Stock $productStock)
     {
         // If there's no data...
-        if (!$wsProduct = $this->updateProductStock($productStock)) {
-            return false;
-        }
-
-        // Update the product!
-        $result = $this->edit(
-            array(
-                "resource" => "products",
-                "id" => $productStock->getIdProduct(),
-                    "putXml" => $wsProduct->asXML(),
-            )
-        );
-
-        if ($result) {
-            return $productStock;
-        }
-
-        return false;
+        return $this->getStockAvailableAndUpdate($productStock);
     }
 
     /**
@@ -257,22 +240,52 @@ class CustomPrestashopWS extends PrestaShopWebservice
     }
 
     /**
+     * @param Stock $productStock
+     *
+     * @return bool
+     */
+    private function getStockAvailableAndUpdate(Stock $productStock){
+        $productUpdate = $this->get(array('resource' => 'products', 'id' => $productStock->getIdProduct()));
+        $productResources = $productUpdate->children()->children();
+        foreach ($productResources->associations->stock_availables->stock_available as $item) {
+            if (!$this->setProductQuantity($productStock, $item->id, $item->id_product_attribute)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    /**
      * Converts the Schema product from prestashop, to a new one with the Database data
      *
-     * @param Product $product
+     * @param Stock $productStock
      *
-     * @return \SimpleXMLElement
+     * @return bool|Stock
      */
-    private function updateProductStock(Stock $product)
+    private function setProductQuantity(Stock $productStock, $stockId, $attributeId)
     {
         // Get the current product, to store the current data.
-        $productUpdate = $this->get(array('resource' => 'products', 'id' => $product->getIdProduct()));
+        $stockSchema = $this->get(array('url' => $this->url . '/api/stock_availables?schema=blank'));
+        $resources = $stockSchema->children()->children();
+        $resources->id = $stockId;
+        $resources->id_product  = $productStock->getIdProduct();
+        $resources->quantity = $productStock->getQuantity();
+        $resources->id_shop = 1;
+        $resources->out_of_stock=1;
+        $resources->depends_on_stock = 0;
+        $resources->id_product_attribute=$attributeId;
 
-        $productResources = $productUpdate->children()->children();
+        // Update the product!
+        $result = $this->edit(
+            array(
+                "resource" => "stock_availables",
+                "id" => $stockId,
+                "putXml" => $stockSchema->asXML(),
+            )
+        );
 
-        $productResources->quantity = $product->getQuantity();
-
-        return $productUpdate;
+        return $result !== false;
     }
 
     /**

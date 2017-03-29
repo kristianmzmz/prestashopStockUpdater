@@ -151,11 +151,6 @@ class StockSynchronizeCommand extends ContainerAwareCommand
                     $results[$actionType] = 0;
                 }
                 $results[$actionType]++;
-
-                $productStock->setUpdated(true);
-                if($result instanceof Product){
-                    $productStock->setRealProductId($result->getRealProductId());
-                }
                 $em->merge($productStock);
                 $em->flush();
             }
@@ -170,12 +165,6 @@ class StockSynchronizeCommand extends ContainerAwareCommand
         }
 
         // Display results
-        $createdProducts = isset($results[CustomPrestashopWS::CREATE_ACTION])
-            ? isset($results[CustomPrestashopWS::CREATE_ACTION])
-            : 0;
-        $output->writeln("");
-        $output->writeln("Productos creados: " . $createdProducts);
-
         $uodatedProducts = isset($results[CustomPrestashopWS::UPDATE_ACTION])
             ? isset($results[CustomPrestashopWS::UPDATE_ACTION])
             : 0;

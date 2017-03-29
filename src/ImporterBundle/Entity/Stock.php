@@ -46,5 +46,17 @@ class Stock
     {
         return $this->idProduct;
     }
+
+    /**
+     * @param int $idProduct
+     *
+     * @return Stock
+     */
+    public function setIdProduct($idProduct)
+    {
+        $this->idProduct = $idProduct;
+
+        return $this;
+}
 }
 

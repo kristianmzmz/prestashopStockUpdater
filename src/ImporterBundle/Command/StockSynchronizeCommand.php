@@ -147,10 +147,6 @@ class StockSynchronizeCommand extends ContainerAwareCommand
             }
 
             if ($result !== false) {
-                if(!isset($results[$actionType])){
-                    $results[$actionType] = 0;
-                }
-                $results[$actionType]++;
                 $em->merge($productStock);
                 $em->flush();
             }
@@ -163,12 +159,5 @@ class StockSynchronizeCommand extends ContainerAwareCommand
         if ($progress->getMaxSteps() != $progress->getProgress()) {
             $progress->finish();
         }
-
-        // Display results
-        $uodatedProducts = isset($results[CustomPrestashopWS::UPDATE_ACTION])
-            ? isset($results[CustomPrestashopWS::UPDATE_ACTION])
-            : 0;
-        $output->writeln("");
-        $output->writeln("Productos actualizados: " . $uodatedProducts);
     }
 }

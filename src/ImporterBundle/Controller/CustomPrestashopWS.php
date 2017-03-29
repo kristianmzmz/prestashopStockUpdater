@@ -144,7 +144,6 @@ class CustomPrestashopWS extends PrestaShopWebservice
      */
     public function updateStock(Stock $productStock)
     {
-        // If there's no data...
         return $this->getStockAvailableAndUpdate($productStock);
     }
 

@@ -9,7 +9,7 @@ Installation
 ============
 - Composer install 
 - Fill the requested parameters 
-- Create database schema --> ***php app/console stock:updater***
+- Create database schema --> ***php doctrine:schema:create***
 
 Commands:
 ========

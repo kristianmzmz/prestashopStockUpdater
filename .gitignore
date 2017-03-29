@@ -1,4 +1,9 @@
 # Created by .ignore support plugin (hsz.mobi)
+*~
+.DS_Store
+selenium-debug.log
+.idea/*
+
 ### Symfony template
 # Cache and logs (Symfony2)
 /app/cache/*

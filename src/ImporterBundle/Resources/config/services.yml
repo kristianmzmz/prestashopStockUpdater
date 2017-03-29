@@ -14,6 +14,7 @@ services:
             - '@importer_bundle.repository.stock'
             - '@importer_bundle.csv_stocks_columns_mapping'
             - '%images_path%'
+
     # CSV product mapping columns
     importer_bundle.csv_products_columns_mapping:
         class: ImporterBundle\Entity\CsvProductMapping
@@ -25,6 +26,14 @@ services:
         class: ImporterBundle\Entity\CsvOnlyStockMapping
         arguments:
             - '%path_to_csv_stocks%'
+
+    # Stock Repository
+    importer_bundle.repository.stock:
+        class: ImporterBundle\Entity\StockRepository
+        factory: ['@doctrine.orm.default_entity_manager', getRepository]
+        arguments:
+            - ImporterBundle\Entity\Stock
+
     # Product Repository
     importer_bundle.repository.product:
         class: ImporterBundle\Entity\ProductRepository

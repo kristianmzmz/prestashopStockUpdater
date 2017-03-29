@@ -2,9 +2,11 @@
 
 namespace ImporterBundle\Controller;
 
-use ImporterBundle\Entity\CsvProductMapping;
+use ImporterBundle\Entity\AbstractCsvMapping;
 use ImporterBundle\Entity\Product;
 use ImporterBundle\Entity\ProductRepository;
+use ImporterBundle\Entity\Stock;
+use ImporterBundle\Entity\StockRepository;
 use League\Csv\Reader;
 
 class CsvProductProvider
@@ -15,7 +17,7 @@ class CsvProductProvider
     /** @var Reader|null */
     private $csvReader;
 
-    /** @var CsvProductMapping */
+    /** @var array */
     private $csvMapping;
 
     /** @var ProductRepository */
@@ -24,18 +26,27 @@ class CsvProductProvider
     /** @var string */
     private $localPathImages;
 
+    /** @var StockRepository */
+    private $stockRepository;
+
     /**
      * CsvProductProvider constructor.
      *
-     * @param ProductRepository $productRepository
-     * @param CsvProductMapping $csvMapping
-     * @param string            $localPathImages
+     * @param ProductRepository  $productRepository
+     * @param StockRepository    $stockRepository
+     * @param AbstractCsvMapping $csvMapping
+     * @param string             $localPathImages
      */
-    public function __construct(ProductRepository $productRepository, CsvProductMapping $csvMapping, $localPathImages)
-    {
+    public function __construct(
+        ProductRepository $productRepository,
+        StockRepository $stockRepository,
+        AbstractCsvMapping $csvMapping,
+        $localPathImages
+    ) {
         $this->csvPath = $csvMapping->getCsvPath();
         $this->csvMapping = $csvMapping->getMapping();
         $this->productRepository = $productRepository;
+        $this->stockRepository = $stockRepository;
         $this->localPathImages = $localPathImages;
 
         if (is_null($this->csvPath)) {
@@ -61,13 +72,58 @@ class CsvProductProvider
     }
 
     /**
+     * @param array $csvRow
+     *
+     * @return bool
+     */
+    public function processCSVStockRow($csvRow)
+    {
+        $stock = $this->createStockFormRowData($csvRow);
+
+        return $this->stockRepository->createOrUpdateStock($stock);
+    }
+
+    /**
+     * @param array $csvRow
+     *
+     * @return bool
+     */
+    public function processCSVRow($csvRow)
+    {
+        $product = $this->createProductFormRowData($csvRow);
+
+        return $this->productRepository->createOrUpdateProduct($product);
+    }
+
+    /**
+     * Returns the Product object with the data set from the CSV row
+     *
+     * @param $csvRowData
+     *
+     * @return Stock
+     */
+    private function createStockFormRowData($csvRowData)
+    {
+        $stock = new Stock();
+        foreach ($this->csvMapping as $columnKey => $columnName) {
+            $methodName = Utils::getSetterName($columnName);
+
+            $value = Utils::cleanValue($csvRowData[$columnKey]);
+
+            $stock->$methodName($value);
+        }
+
+        return $stock;
+    }
+
+    /**
      * Returns the Product object with the data set from the CSV row
      *
      * @param $csvRowData
      *
      * @return Product
      */
-    public function createProductFormRowData($csvRowData)
+    private function createProductFormRowData($csvRowData)
     {
         $product = new Product();
         foreach ($this->csvMapping as $columnKey => $columnName) {
@@ -91,17 +147,5 @@ class CsvProductProvider
         }
 
         return $product;
-    }
-
-    /**
-     * @param array $csvRow
-     *
-     * @return bool
-     */
-    public function processCSVRow($csvRow)
-    {
-        $product = $this->createProductFormRowData($csvRow);
-
-        return $this->productRepository->createOrUpdateProduct($product);
     }
 }

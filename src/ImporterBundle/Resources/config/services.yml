@@ -3,9 +3,17 @@ services:
         class: ImporterBundle\Controller\CsvProductProvider
         arguments:
             - '@importer_bundle.repository.product'
+            - '@importer_bundle.repository.stock'
             - '@importer_bundle.csv_products_columns_mapping'
             - '%images_path%'
 
+    importer_bundle.provider.csv_only_stock:
+        class: ImporterBundle\Controller\CsvProductProvider
+        arguments:
+            - '@importer_bundle.repository.product'
+            - '@importer_bundle.repository.stock'
+            - '@importer_bundle.csv_stocks_columns_mapping'
+            - '%images_path%'
     # CSV product mapping columns
     importer_bundle.csv_products_columns_mapping:
         class: ImporterBundle\Entity\CsvProductMapping

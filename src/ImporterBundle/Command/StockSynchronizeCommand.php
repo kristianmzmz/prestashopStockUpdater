@@ -127,24 +127,7 @@ class StockSynchronizeCommand extends ContainerAwareCommand
 
         /** @var Stock $productStock */
         foreach ($products as $productStock) {
-            $productId = $productStock->getIdProduct();
-            $actionType = $webService->getActionType($productId, $output);
-
-            // In this importer we only want to update, not create
-            switch ($actionType) {
-                case CustomPrestashopWS::UPDATE_ACTION:
-                    $result = $webService->updateStock($productStock);
-                    break;
-                case CustomPrestashopWS::CREATE_ACTION:
-                case CustomPrestashopWS::ERROR_ACTION:
-                default:
-                    // We have to do something else?
-                    $result = false;
-
-                    $output->writeln("");
-                    $output->writeln('Error en el producto: ' . $productId, true);
-                    break;
-            }
+            $result = $webService->updateStock($productStock);
 
             if ($result !== false) {
                 $em->merge($productStock);

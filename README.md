@@ -1,14 +1,28 @@
+Description
+===========
+Given a CSV with the proper columns, it will update or create a product inside Prestashop using the Webservice API:
+
+The definition of the fields can be found here: 
+***\ImporterBundle\Entity\CsvOnlyStockMapping***
+
+***\ImporterBundle\Entity\CsvProductMapping***
+
+
 Requirements
 ===========
 
 - Composer
-- Local MySql database
 - PHP >5.6
+
+_Only for full product version_
+- Local MySql database 
 
 Installation
 ============
 - Composer install 
 - Fill the requested parameters 
+
+_Only for full product version_
 - Create database schema --> ***php doctrine:schema:create***
 
 Commands:

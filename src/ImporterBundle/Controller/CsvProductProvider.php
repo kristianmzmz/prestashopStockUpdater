@@ -74,13 +74,11 @@ class CsvProductProvider
     /**
      * @param array $csvRow
      *
-     * @return bool
+     * @return Stock
      */
     public function processCSVStockRow($csvRow)
     {
-        $stock = $this->createStockFormRowData($csvRow);
-
-        return $this->stockRepository->createOrUpdateStock($stock);
+        return $this->createStockFormRowData($csvRow);
     }
 
     /**

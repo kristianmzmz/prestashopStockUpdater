@@ -18,9 +18,6 @@ class StockSynchronizeCommand extends ContainerAwareCommand
 {
     const BATCH_NUMBER = 250;
 
-    /** @var CsvProductProvider */
-    private $csvReader;
-
     /**
      * Configuration of the command
      */
@@ -41,22 +38,10 @@ class StockSynchronizeCommand extends ContainerAwareCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        // First get the Repository to use it.
-        $doctrine = $this->getContainer()->get('doctrine');
-        $em = $this->getContainer()->get('doctrine')->getManager();
-
-        // Set the reader
-        $this->csvReader = $this->getContainer()->get('importer_bundle.provider.csv_only_stock');
-
-        /** @var ProductRepository $stockRepository */
-        $stockRepository = $doctrine->getRepository('ImporterBundle:Stock');
-
-        $output->writeln("Importando productos de CSV a Base de datos");
-        $this->importProducts($output, $em);
-        $output->writeln("");
-        $output->writeln("");
+        // Sincronise products
         $output->writeln("Sincronizando Estocs a Prestashop");
-        $this->exportStockToPrestashop($output, $stockRepository, $em);
+        $this->updateProducts($output);
+        $output->writeln("");
 
         return true;
     }
@@ -65,13 +50,13 @@ class StockSynchronizeCommand extends ContainerAwareCommand
      * Exports the database products to Prestashop
      *
      * @param OutputInterface $output
-     * @param EntityManager   $em
      *
      * @return bool
      */
-    protected function importProducts(OutputInterface $output, EntityManager $em)
+    protected function updateProducts(OutputInterface $output)
     {
-        $allCSVRows = $this->csvReader->getCSVRows();
+        $csvReader = $this->getContainer()->get('importer_bundle.provider.csv_only_stock');
+        $allCSVRows = $csvReader->getCSVRows();
 
         if (($productsCount = count($allCSVRows)) == 0) {
             $output->writeln("No hay productos para importar");
@@ -86,16 +71,12 @@ class StockSynchronizeCommand extends ContainerAwareCommand
         $progress->start();
 
         foreach ($allCSVRows as $csvRow) {
-            if ($this->csvReader->processCSVStockRow($csvRow)) {
+            $stock = $csvReader->processCSVStockRow($csvRow);
+            if($this->exportStockToPrestashop($output, $stock)){
                 $progress->advance();
-                if ($progress->getProgress() % self::BATCH_NUMBER == 0) {
-                    $em->flush();
-                }
             }
         }
 
-        // Be sure we persist the final ones
-        $em->flush();
         // ensure that the progress bar is at 100%
         $progress->finish();
 
@@ -107,57 +88,38 @@ class StockSynchronizeCommand extends ContainerAwareCommand
     }
 
     /**
-     * Exports the database products to Prestashop
+     * Updates the stock of the product.
      *
      * @param OutputInterface  $output
-     * @param EntityRepository $stockRepository
-     * @param EntityManager    $em
+     * @param Stock            $productStock
+     *
+     * @return bool
      */
-    protected function exportStockToPrestashop(OutputInterface $output, EntityRepository $stockRepository, EntityManager $em)
+    protected function exportStockToPrestashop(OutputInterface $output, Stock $productStock)
     {
         /** @var CustomPrestashopWS $webService */
         $webService = $this->getContainer()->get('importer_bundle.web_service_factory')->getInstance();
 
-        // Get all the products that have been updated
-        $products = $stockRepository->findAll();
-        $progress = new ProgressBar($output, count($products));
+        $productId = $productStock->getIdProduct();
+        $actionType = $webService->getActionType($productId, $output);
 
-        // start and displays the progress bar
-        $progress->start();
+        // In this importer we only want to update, not create
+        switch ($actionType) {
+            case CustomPrestashopWS::UPDATE_ACTION:
+                $result = $webService->updateStock($productStock);
+                break;
+            case CustomPrestashopWS::CREATE_ACTION:
+            case CustomPrestashopWS::ERROR_ACTION:
+            default:
+                // We have to do something else?
+                $result = false;
 
-        /** @var Stock $productStock */
-        foreach ($products as $productStock) {
-            $productId = $productStock->getIdProduct();
-            $actionType = $webService->getActionType($productId, $output);
-
-            // In this importer we only want to update, not create
-            switch ($actionType) {
-                case CustomPrestashopWS::UPDATE_ACTION:
-                    $result = $webService->updateStock($productStock);
-                    break;
-                case CustomPrestashopWS::CREATE_ACTION:
-                case CustomPrestashopWS::ERROR_ACTION:
-                default:
-                    // We have to do something else?
-                    $result = false;
-
-                    $output->writeln("");
-                    $output->writeln('Error en el producto: ' . $productId, true);
-                    break;
-            }
-
-            if ($result !== false) {
-                $em->merge($productStock);
-                $em->flush();
-            }
-
-            // advance the progress bar 1 unit
-            $progress->advance();
+                $output->writeln("");
+                $output->writeln('Error en el producto: ' . $productId, true);
+                $output->writeln("");
+                break;
         }
 
-        // ensure that the progress bar is at 100%
-        if ($progress->getMaxSteps() != $progress->getProgress()) {
-            $progress->finish();
-        }
+        return $result;
     }
 }

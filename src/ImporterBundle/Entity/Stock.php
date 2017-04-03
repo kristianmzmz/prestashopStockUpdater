@@ -2,7 +2,6 @@
 
 namespace ImporterBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 
 class Stock
 {

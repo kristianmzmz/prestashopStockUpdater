@@ -2,12 +2,7 @@
 
 namespace ImporterBundle\Command;
 
-use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\EntityRepository;
-use ImporterBundle\Controller\CsvProductProvider;
 use ImporterBundle\Controller\CustomPrestashopWS;
-use ImporterBundle\Entity\Product;
-use ImporterBundle\Entity\ProductRepository;
 use ImporterBundle\Entity\Stock;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Helper\ProgressBar;
